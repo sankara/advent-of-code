@@ -5,7 +5,8 @@ import kotlin.math.pow
 fun main() {
     val opers: List<Pair<String, (Long, Long) -> Long>> = listOf(
         "+" to { a, b -> a + b },
-        "*" to { a, b -> a * b })
+        "*" to { a, b -> a * b },
+        "||" to { a, b -> (a.toString() + b.toString()).toLong() })
     val sum = readInputs().filter { (res, nums) -> checkCombinations(res, nums, opers) }.sumOf { it.first }
     println("Sum = $sum")
 }
@@ -25,7 +26,7 @@ private fun checkCombinations(res: Long, values: List<Long>, opers: List<Pair<St
     for (i in 0..<numOps.pow(values.size - 1).toInt()) {
         var sum = values[0]
         for (j in values.size - 2 downTo 0) {
-            val oper = (i shr j) and 1
+            val oper = (i / numOps.pow(j)).mod(numOps).toInt()
             sum = opers[oper].second(sum, values[values.size - j - 1])
         }
         if (sum == res) return true
