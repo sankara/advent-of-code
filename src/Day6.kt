@@ -3,7 +3,6 @@ import State.*
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
-data class Coord(val x: Int, val y: Int)
 data class MapState(var state: State, var traversedDirs: MutableList<Dir>)
 data class Pos(val pos: Coord, val dir: Dir)
 

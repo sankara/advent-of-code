@@ -3,8 +3,6 @@ import kotlin.io.path.readLines
 import kotlin.math.abs
 import kotlin.math.sign
 
-fun <L> Iterable<L>.withoutItemAt(index: Int) = filterIndexed { i, _ -> i != index }
-
 fun main() {
     val data = Path("resources/day-2.input.txt").readLines().map { it.split(" ").map(String::toInt) }
 
